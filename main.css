@@ -1,0 +1,259 @@
+:root{
+    --white: #FFFFFF;
+
+    --light-blue-100: #F3F5FC;
+    --light-blue-200: #EFF1FA;
+    --light-blue-300: #E9ECF8;
+    --light-blue-400: #AAB2D5;
+    --light-blue-500: #757FB2;
+
+
+    --dark-blue-100: #609ED4;
+    --dark-blue-200: #356EA9;
+    --dark-blue-300: #0A3871;
+    --dark-blue-400: #072B61;
+
+    --gray-100: #CED4DA;
+    --gray-200: #ADB5BD;
+    --gray-300: #868E96;
+    --gray-400: #495057;
+    --gray-500: #343A40;
+
+
+    --border-radius : 2.4rem;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Inter';
+    background-color: var(--light-blue);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 30rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    
+    background-color: var(--light-blue-100);
+}
+
+.invisible {
+    display: none;
+}
+
+.icon-website {
+    margin-top: .8rem;
+    align-items: start;
+}
+
+.icon-website img {
+    width: 3.2rem;
+    height: 4.8rem;
+}
+
+.input-box {
+    margin-top: 8rem;
+    width: 100%;
+    height: 22rem;
+    
+    font-family: 'inter', 'arial';
+    color: var(--dark-blue-300);
+    font-weight: 400;
+    font-size: 3.2rem;
+    line-height: 150%;
+
+    border: none;
+    background-color: var(--light-blue-100);
+    resize: none;
+    overflow-y: scroll;
+}
+
+.foot-note {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    margin-top: 6.4rem;
+}
+
+.foot-note p {
+    margin-left: .8rem;
+    color: var(--gray-400);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.blue-button {
+    width: 100%;
+    height: 6.7rem;
+
+    margin-top: 16px;
+
+    align-content: center;
+    color: var(--white);
+    background-color: var(--dark-blue-300);
+    border-radius: var(--border-radius);
+}
+.blue-button:hover {
+    background-color: var(--dark-blue-400);
+}
+
+.white-button {
+    width: 100%;
+    height: 6.7rem;
+    margin-top: 16px;
+
+    color: var(--dark-blue-300);
+    background-color: var(--light-blue-100);
+    border: .1rem solid var(--dark-blue-300);
+    border-radius: var(--border-radius);
+
+}
+.white-button:hover{
+    background-color: var(--light-blue-200);
+}
+
+.out-put{
+    width: 100%;
+    min-height: 18.6rem;
+    margin-top: 6.4rem;
+
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    margin-bottom: 2.4rem;
+
+    box-shadow:0 2.4rem 3.2rem .8rem rgba(0, 0, 0, 0.08);
+}
+
+.out-put picture {
+    display: none;
+}
+
+.out-put h2 {
+    margin-top: 1.6rem;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 2.4rem;
+    
+    line-height: 120%;
+    color: var(--gray-500);
+}
+
+.out-put h4 {
+    margin-top: 1.6rem;
+
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 150%;
+    text-align: center;
+
+    color: var(--gray-400);
+}
+
+.out-put p {
+    flex: none;
+    margin-top: 1.6rem;
+    
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 150%;
+    
+    color: var(--gray-400);
+}
+
+.copy-button {
+    position: relative;
+    bottom: 0;
+}
+
+@media (min-width: 450px) {
+    body {
+        width: 40rem;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        width: 76rem;
+    }
+        
+    .input-box {
+        height: 76rem;
+    }
+
+    .buttons {
+        flex-direction: row;
+        gap: 2.4rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    body{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 5rem auto auto;
+
+        width: auto;
+        margin: 0;
+        
+        padding: 0;
+        padding-top: 4rem;
+    }
+
+    .icon-website{
+        margin: 0;
+    }
+
+    .body-content {
+        grid-column: 1;
+        justify-self: end;
+        width: 64rem;
+        margin: 3.6rem 8rem 0 7.2rem;
+    }
+
+    .input-box {
+        margin: 0;
+        height: calc(100vh - 32rem);
+    }
+
+    .icon-website{
+        margin-left: 8.4rem;
+    }
+
+    .out-put{
+        margin: 0;
+        height: 100%;
+    }
+
+    .out-put picture {
+        display: block;
+    }
+
+    .aside{
+        width: 40rem;
+        grid-column: 2;
+        grid-row: 1 / 2;
+        height: calc(100vh - 8rem);
+    }
+}
