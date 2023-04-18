@@ -32,26 +32,27 @@
 html {
     font-size: 62.5%;
     font-family: 'Inter';
-    background-color: var(--light-blue);
+    background-color: var(--light-blue-100);
 }
 
 body {
     display: flex;
     flex-direction: column;
+}
 
-    margin-left: auto;
-    margin-right: auto;
-
-    width: 30rem;
+.body-content{
+    align-self: center;
+    width: 100%;
+    max-width: 50rem;
+    
+    padding-top: 2.4rem;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
-    
-    background-color: var(--light-blue-100);
 }
 
 .icon-website {
-    margin-top: .8rem;
-    align-items: start;
+    margin-top: 2.4rem;
+    margin-left: 1.6rem;
 }
 
 .icon-website img {
@@ -114,6 +115,7 @@ textarea::placeholder {
     background-color: var(--dark-blue-300);
     border-radius: var(--border-radius);
 }
+
 .blue-button:hover {
     background-color: var(--dark-blue-400);
 }
@@ -127,35 +129,33 @@ textarea::placeholder {
     background-color: var(--light-blue-100);
     border: .1rem solid var(--dark-blue-300);
     border-radius: var(--border-radius);
-
 }
+
 .white-button:hover{
     background-color: var(--light-blue-200);
 }
 
-.out-put{
-    width: 100%;
-    min-height: 18.6rem;
+.aside {
+    display: grid;
+    align-self: center;
+
+    width: calc(100% - 4.8rem);
+    max-width: 50rem;
+    
     margin-top: 6.4rem;
-
-    padding-top: 1.6rem;
-    padding-bottom: 1.6rem;
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
-
+    margin-bottom: 2.4rem;
+    padding: 2.4rem 3.2rem;
+    
     background-color: var(--white);
     border-radius: var(--border-radius);
-    margin-bottom: 2.4rem;
-
     box-shadow:0 2.4rem 3.2rem .8rem rgba(0, 0, 0, 0.08);
 }
 
-.out-put picture {
+.no-message-found picture {
     display: none;
 }
 
-.out-put h2 {
-    margin-top: 1.6rem;
+.no-message-found h2 {
     text-align: center;
 
     font-weight: 700;
@@ -165,7 +165,7 @@ textarea::placeholder {
     color: var(--gray-500);
 }
 
-.out-put h4 {
+.no-message-found h4 {
     margin-top: 1.6rem;
 
     font-weight: 400;
@@ -181,8 +181,8 @@ textarea::placeholder {
     grid-template-rows: auto 7rem;
 }
 
-.out-put p {
-    flex: none;
+.encripted-message p {
+
     margin-top: 1.6rem;
     
     font-weight: 400;
@@ -190,83 +190,82 @@ textarea::placeholder {
     line-height: 150%;
     
     color: var(--gray-400);
-}
-
-.invisible {
-    display: none;
-}
-
-@media (min-width: 450px) {
-    body {
-        width: 40rem;
-    }
+    overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
-    body {
-        width: 76rem;
+    .icon-website {
+        margin-top: 7.5rem;
+        margin-left: 4rem;
     }
-        
-    .input-box {
-        height: 76rem;
+    .body-content {
+        max-width: 80rem;
+        padding-top: 7.5rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
 
     .buttons {
         flex-direction: row;
         gap: 2.4rem;
     }
+
+    .aside {
+        max-width: 80rem;
+        width: calc(100% - 8rem);
+    }
 }
 
 @media (min-width: 1000px) {
-    body{
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: 5rem auto auto;
-
-        width: auto;
-        margin: 0;
-        
-        padding: 0;
-        padding-top: 4rem;
+    body {
+        flex-direction: row;
+        align-items: start;
+        place-content: center;
+        height: 100vh;
     }
 
-    .icon-website{
-        margin: 0;
-    }
-
-    .body-content {
-        grid-column: 1;
-        justify-self: end;
-        width: 64rem;
-        margin: 3.6rem 8rem 0 7.2rem;
-    }
-
-    .input-box {
-        margin: 0;
-        height: calc(100vh - 32rem);
-    }
-
-    .icon-website{
+    .icon-website {
+        margin-top: 4rem;
         margin-left: 8.4rem;
     }
 
-    .out-put{
+    .body-content {
         display: grid;
-        place-content: center;
-        margin: 0;
+        grid-template-rows: 1fr 8.4rem 8.3rem;
 
-        height: calc(100vh - 8rem);
+        height: 100vh;
+        padding: 12.5rem 8rem 7.5rem 12.5rem;
+        
     }
 
-    .out-put picture {
+    .input-box {
+        margin-top: 0;
+        height: 100%;
+    }
+
+    .aside {
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+
+        width: 40rem;
+        height: calc(100vh - 8rem);
+        margin: 4rem 4rem;
+    }
+
+    .no-message-found picture {
         display: block;
     }
 
-    .aside{
-        width: 40rem;
-        grid-column: 2;
-        grid-row: 1 / 2;
-
-        height: calc(100vh - 8rem);
+    .encripted-message {
+        display: grid;
+        grid-template-rows: 1fr 8.4rem;
+        height: 100%;
     }
+}
+
+.invisible {
+    display: none;
+    height: 0;
+    width: 0;
 }

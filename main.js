@@ -1,6 +1,5 @@
 const inputBox = document.querySelector('#input-box');
 const encriptButton = document.querySelector('#encript');
-
 const noMessage = document.querySelector('.no-message-found');
 const encriptedMessage = document.querySelector('.encripted-message');
 const outPut = document.querySelector('#output');
@@ -19,6 +18,8 @@ inputBox.addEventListener('keyup', () => {
     }
 })
 
+var encriptedText = '';
+
 function getInputText() {
     // get the text from the input box
     let inputText = inputBox.value;
@@ -28,6 +29,7 @@ function getInputText() {
         if(noMessage.classList.contains('invisible')){
             noMessage.classList.remove('invisible');
             encriptedMessage.classList.add('invisible');
+            copyButton.classList.add('invisble');
         }    
         return
     }
@@ -46,8 +48,6 @@ function getInputText() {
         console.warn("Hay caracteres especiales")
         return
     }
-
-    var encriptedText = '';
 
     for (const index in inputText) {
 
@@ -79,7 +79,10 @@ function getInputText() {
     //console.log(encriptedText);
     noMessage.classList.add('invisible');
     encriptedMessage.classList.remove('invisible');
+    copyButton.classList.remove('invisible');
     outPut.innerHTML = encriptedText;
-
-
 }
+
+copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(encriptedText);
+})
