@@ -22,7 +22,7 @@
 
     <div class="body-content">
         <form>
-            <textarea id="inputText" class="input-box" type="text">Ingrese el texto aqui</textarea>
+            <textarea id="input-box" class="input-box" type="text" placeholder="Ingrese el texto aqui"></textarea>
         </form>
 
         <div class="foot-note">
@@ -33,21 +33,33 @@
         </div>
 
         <div class="buttons">
-            <button class="blue-button">Encriptar</button>
-            <button class="white-button">Desencriptar</button>
+            <button id="encript" class="blue-button">Encriptar</button>
+            <button id="unencript" class="white-button">Desencriptar</button>
         </div>
     </div>
 
-    <div class="aside">
+    <aside class="aside">
         <div id="output-box" class="out-put">
-            <picture>
-                <img src="./icons/Muñeco.svg" alt="No results found guy">
-            </picture>
-            <h2 id="no-message-found">Ning&uacute;n mensaje fue encontrado</h2>
-            <h4 id="enter-text">Ingresa el texto que desees encriptar o desencriptar</h4>
-        </div>
-    </div>
+            
+            <div class="no-message-found">
+                <picture>
+                    <img src="./icons/Muñeco.svg" alt="No results found guy">
+                </picture>
+                <h2>Ning&uacute;n mensaje fue encontrado</h2>
+                <h4>Ingresa el texto que desees encriptar o desencriptar</h4>
+            </div>
 
+            <div class="encripted-message invisible">
+                <p id="output"></p>
+                <button id="copy-button" class="white-button">
+                    Copiar
+                </button>
+            </div>
+            
+        </div>
+    </aside>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
