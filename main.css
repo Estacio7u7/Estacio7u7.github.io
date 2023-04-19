@@ -182,7 +182,7 @@ textarea::placeholder {
 }
 
 .encripted-message p {
-
+    width: 100%;
     margin-top: 1.6rem;
     
     font-weight: 400;
@@ -190,8 +190,15 @@ textarea::placeholder {
     line-height: 150%;
     
     color: var(--gray-400);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
+
+.invisible {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
 
 @media (min-width: 768px) {
     .icon-website {
@@ -200,7 +207,6 @@ textarea::placeholder {
     }
     .body-content {
         max-width: 80rem;
-        padding-top: 7.5rem;
         padding-left: 4rem;
         padding-right: 4rem;
     }
@@ -262,10 +268,4 @@ textarea::placeholder {
         grid-template-rows: 1fr 8.4rem;
         height: 100%;
     }
-}
-
-.invisible {
-    display: none;
-    height: 0;
-    width: 0;
 }

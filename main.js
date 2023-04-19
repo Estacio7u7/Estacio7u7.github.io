@@ -1,58 +1,81 @@
+// text areas
 const inputBox = document.querySelector('#input-box');
-const encriptButton = document.querySelector('#encript');
+const outPut = document.querySelector('#output');
+
+// areas which contains interface elements
 const noMessage = document.querySelector('.no-message-found');
 const encriptedMessage = document.querySelector('.encripted-message');
-const outPut = document.querySelector('#output');
-const copyButton = document.querySelector('#copy-button')
 
-encriptButton.addEventListener('click', getInputText);
+// interface buttons
+const encriptButton = document.querySelector('#encript');
+const unencriptButton = document.querySelector('#unencript');
+const copyButton = document.querySelector('#copy-button');
+
+// event listeners
+encriptButton.addEventListener('click', () => {
+    if (inputBox.value.length != 0) encript(inputBox.value);
+});
+
+unencriptButton.addEventListener('click', () => {
+    if (inputBox.value.length != 0) unencript(inputBox.value);
+})
+
+copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(outPut.innerHTML);
+})
 
 inputBox.addEventListener('keyup', () => {
-    //console.log('keyup');
+    // If the input-box is empty show the boy and the headers
     if (inputBox.value.length == 0) {
-        if(noMessage.classList.contains('invisible')){
-            noMessage.classList.remove('invisible');
+        if (noMessage.classList.contains('invisible')) {
+            // hide the output of the messages
             encriptedMessage.classList.add('invisible');
-        }    
-        return
+            // show the warning that there is no text
+            noMessage.classList.remove('invisible');
+        }
     }
 })
 
-var encriptedText = '';
+// functions
 
-function getInputText() {
-    // get the text from the input box
-    let inputText = inputBox.value;
-    //console.log(inputText)
+// Encription keys
+const encriptionRules = [
+    {
+        in: 'e',
+        out: 'enter',
+    },
+    {
+        in: 'i',
+        out: 'imes',
+    },
+    {
+        in: 'a',
+        out: 'ai',
+    },
+    {
+        in: 'o',
+        out: 'ober',
+    },
+    {
+        in: 'u',
+        out: 'ufat',
+    },
+]
 
-    if (inputText.length == 0) {
-        if(noMessage.classList.contains('invisible')){
-            noMessage.classList.remove('invisible');
-            encriptedMessage.classList.add('invisible');
-            copyButton.classList.add('invisble');
-        }    
-        return
+function encript(textToEncript) {
+
+    // encript according to the rules provided (new way)
+    if (isEncriptable(textToEncript)) {
+        encriptionRules.forEach(key => {
+            textToEncript = textToEncript.split(key.in).join(key.out);
+        });
+        //show the text on the screen
+        showOutput(textToEncript);
     }
 
-    // must work only with non-capital
-    let noncapital = inputText.toLowerCase();
-    if (inputText != noncapital) {
-        console.warn("Hay mayusculas en el text")
-        return
-    }
-
-    // must not work with special characters and accents
-    let regex = /[^\w\sáéíóúñ]/;
-
-    if (regex.test(inputText)) {
-        console.warn("Hay caracteres especiales")
-        return
-    }
-
+    /*/ encript according to the rules provided (old way)
     for (const index in inputText) {
-
         //console.log(inputText[index]);
-
         switch (inputText[index]) {
             case 'a':
                 encriptedText = encriptedText + 'ai';
@@ -75,14 +98,44 @@ function getInputText() {
 
         }
     }
-
-    //console.log(encriptedText);
-    noMessage.classList.add('invisible');
-    encriptedMessage.classList.remove('invisible');
-    copyButton.classList.remove('invisible');
-    outPut.innerHTML = encriptedText;
+    */
 }
 
-copyButton.addEventListener('click', () => {
-    navigator.clipboard.writeText(encriptedText);
-})
+function unencript(textToUnencript) {
+    // unencript the provided text
+    if (isEncriptable(textToUnencript)) {
+        encriptionRules.forEach(key => {
+            textToUnencript = textToUnencript.split(key.out).join(key.in);
+        })
+        // show the text on the screen
+        showOutput(textToUnencript);
+    }
+}
+
+function isEncriptable(inputText) {
+    // must work only with non-capital
+    let noncapital = inputText.toLowerCase();
+    if (inputText != noncapital) {
+        console.warn("Hay mayusculas en el text")
+        return false
+    }
+
+    // must not work with special characters and accents
+    let regex = /[^\w\sáéíóúñ]/;
+    if (regex.test(inputText)) {
+        console.warn("Hay caracteres especiales")
+        return false
+    }
+    return true;
+}
+
+function showOutput(outputText) {
+    // hide warning that there is no text
+    noMessage.classList.add('invisible');
+
+    // show the message box
+    encriptedMessage.classList.remove('invisible');
+    
+    // edit the paragraph and show the text
+    outPut.innerHTML = outputText;
+}
